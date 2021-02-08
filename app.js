@@ -38,7 +38,9 @@ const searchText = document.getElementById("searchText");
 searchBtn.addEventListener("click", () => {
     searchStr = searchText.value;
     //console.log(searchStr);
+    searchText.value="";
     fetchData(searchStr[0]);
+    
 })
 //fetching data
 const fetchData = (searchValue) => {
