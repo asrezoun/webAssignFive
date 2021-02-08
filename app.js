@@ -2,7 +2,7 @@ let searchStr;
 const parentDiv = document.getElementById('foodCards');
 ///showing all the food items based on search
 const foodList = (food) => {
-    document.getElementById("singleCardParent").style.display="none";
+    document.getElementById("singleCardParent").style.display = "none";
     let singleCard = "";
     if (food) {
         food.forEach(meal => {
@@ -10,7 +10,7 @@ const foodList = (food) => {
             //let value = meal.strMeal.slice(0, length).toLowerCase();
 
             //if (searchStr == value) {
-                singleCard += `
+            singleCard += `
                     <div class = "singleCard" onClick="displaySingle(${meal.idMeal})" value = "${meal.idMeal}">
                         <div>
                             <img class="img" src = "${meal.strMealThumb}" alt = "">
@@ -38,9 +38,9 @@ const searchText = document.getElementById("searchText");
 searchBtn.addEventListener("click", () => {
     searchStr = searchText.value;
     //console.log(searchStr);
-    searchText.value="";
+    searchText.value = "";
     fetchData(searchStr[0]);
-    
+
 })
 //fetching data
 const fetchData = (searchValue) => {
@@ -60,7 +60,7 @@ const displaySingle = (id) => {
 //single item html
 const displayCard = (singleFood) => {
 
-    document.getElementById("singleCardParent").style.display="block";
+    document.getElementById("singleCardParent").style.display = "block";
     let meal = singleFood[0];
     let displayCardHtml = "";
     const parentDisplayCard = document.getElementById("singleCard");
@@ -79,32 +79,30 @@ const displayCard = (singleFood) => {
             </div>
         </div>
     `;
-    parentDisplayCard.innerHTML=displayCardHtml;
+    parentDisplayCard.innerHTML = displayCardHtml;
     makeList(meal);
 }
 
 //ingredient list html
-const makeList = (meal)=>{
-    
-    const list = document.getElementById("ingredientList");
-    list.innerHTML="";
-    const ul = document.createElement("ul");
-    
-    for(let i=1;i<=10;i++)
-        {
-            const ingredient = `strIngredient${i}`;
+const makeList = (meal) => {
 
-            if(meal[ingredient])
-            {
-                let li = document.createElement("li");
-                li.innerText = meal[ingredient];
-                ul.appendChild(li);
-                //console.log(li);
-                
-            }
+    const list = document.getElementById("ingredientList");
+    list.innerHTML = "";
+    const ul = document.createElement("ul");
+
+    for (let i = 1; i <= 10; i++) {
+        const ingredient = `strIngredient${i}`;
+
+        if (meal[ingredient]) {
+            let li = document.createElement("li");
+            li.innerText = meal[ingredient];
+            ul.appendChild(li);
+            //console.log(li);
 
         }
+
+    }
     //console.log(ul);
-    
+
     list.appendChild(ul);
 }
